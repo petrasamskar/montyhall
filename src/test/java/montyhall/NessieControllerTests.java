@@ -69,12 +69,12 @@ public class NessieControllerTests {
             gameId ++;
         }
         Assert.assertTrue(countCorrectLakes > countIncorrectLakes);
+        Assert.assertTrue((countCorrectLakes * 100) / numberOfIterations > 60);
     }
 
     @Test
     public void stickWithFirstLakeWillNotBeBeneficial() throws Exception {
         for(int i = 0; i < numberOfIterations; i++) {
-
             Collections.shuffle(lakes);
 
             String startValueToSend = lakes.get(0);
@@ -90,6 +90,7 @@ public class NessieControllerTests {
             gameId++;
         }
         Assert.assertTrue(countIncorrectLakes > countCorrectLakes);
+        Assert.assertTrue((countIncorrectLakes * 100) / numberOfIterations > 60);
     }
 
     private void addToCounter(String returnedLake, String sentLake) {
